@@ -22,6 +22,12 @@ root.title("OCR & Text To Speech - © 2022 Batuhan Tomo")
 root.resizable(False, False)
 sv_ttk.set_theme("dark")
 
+root.update()
+root.minsize(root.winfo_width(), root.winfo_height())
+x_cordinate = int((root.winfo_screenwidth() / 2) - (root.winfo_width() / 2))
+y_cordinate = int((root.winfo_screenheight() / 2) - (root.winfo_height() / 2))
+root.geometry("+{}+{}".format(x_cordinate, y_cordinate-20))
+
 canvas = tk.Canvas(root, width = 500, height = 400)
 canvas.pack()
 
