@@ -14,4 +14,8 @@ Uygulama Google'ın seslendirme desteği verdiği tüm dilleri içermektedir.
 Uygulamanın çalışması için önce " https://github.com/UB-Mannheim/tesseract/wiki " linkinden Tesseract indirilip kurulmalıdır.
 
 Örnek görseller "img" dosyasının içinde bulunmaktadır.
+
+## Uygulama
+
+![Pic](https://github.com/Rekl0w/OCR-Text-To-Speech-Application/blob/main/img/App.png)
  
