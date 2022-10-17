@@ -26,7 +26,7 @@ def show():
     return lang
 
 material = tk.StringVar()
-global wer
+
 canvas = tk.Canvas(root, width = 500, height = 400)
 canvas.pack()
 
@@ -89,19 +89,28 @@ def Process():
 
     fileread = open("text.txt", "r")
     lang = show()
+    if lang == "":
+        showinfo(title="UYARI!", message="Seslendirme Dilini Seçmediniz.")
+        fileread.close()
+        os.remove("text.txt")
     line = fileread.read()
 
-    if line != " ":
+    if line != "":
         speech = gTTS(text=line, lang=lang, slow=False)
         speech.save("record.mp3")
         fileread.close()
-
+        os.remove("text.txt")
+        playsound("record.mp3")
+        os.remove("record.mp3")  
+    elif line == "":
+        showinfo(title="UYARI!", message="Görselde okunacak metin bulunamamıştır.")
+        fileread.close()
+        os.remove("text.txt")
+    
+    # Kelimelerin nasıl işlendiğin son halini görmek isterseniz buradaki yorum satırlarını kaldırabilirsiniz.
     # cv2.imshow("image 1", img)
     # cv2.waitKey(0)
-    playsound("record.mp3")
-    os.remove("record.mp3")
-    os.remove("text.txt") 
-
+ 
 button1 = tk.Button(text='Oku', command=lambda:[Process()])
 canvas.create_window(230, 190, height= 35 ,width=90 , window=button1)
 
