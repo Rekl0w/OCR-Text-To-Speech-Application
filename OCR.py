@@ -1,4 +1,5 @@
 from tkinter.messagebox import showinfo
+from click import style
 import cv2
 import pytesseract
 from gtts import gTTS
@@ -36,18 +37,12 @@ def switch():
     global is_on
     
     if is_on:
-        on_button.config(image = off)
         sv_ttk.set_theme("light")
         is_on = False
     else:
-        on_button.config(image = on)
         sv_ttk.set_theme("dark")
         is_on = True
     
-on = PhotoImage(file = "img/on.png")
-off = PhotoImage(file = "img/off.png")
-on_button = Button(root, image = on, bd = 0, command = switch)
-canvas.create_window(20, 320, window=on_button)
 
 def show():
     global lang
@@ -68,8 +63,8 @@ canvas.create_window(250, 60, window=label)
 label2 = tk.Label(text="Lütfen seslendirme dilini seçiniz.", font='Helvetica 10 bold')
 canvas.create_window(250, 180, window=label2)
 
-label3 = tk.Label(text="Temayı Değiştir", font='Helvetica 10 bold')
-canvas.create_window(20, 280,window=label3)
+switch1 = ttk.Checkbutton(root, text="Temayı Değiştir", style="Switch.TCheckbutton", command = switch)
+canvas.create_window(30,320,window=switch1)
 
 def setTextInput(text):
     entry1.delete(0,"end")
