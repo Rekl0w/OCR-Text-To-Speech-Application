@@ -12,4 +12,6 @@ seslendirilmesini sağlayan bir Python uygulamasıdır.
 Uygulama Google'ın seslendirme desteği verdiği tüm dilleri içermektedir.
 
 Uygulamanın çalışması için önce " https://github.com/UB-Mannheim/tesseract/wiki " linkinden Tesseract indirilip kurulmalıdır.
+
+Örnek görseller "img" dosyasının içinde bulunmaktadır.
  
