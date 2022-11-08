@@ -11,7 +11,8 @@ from tkinter import ttk
 from tkinter import *
 from os.path import exists as file_exists
 import sv_ttk
-
+import pyscreenshot
+import requests
 
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\Tesseract.exe'
 
@@ -55,13 +56,13 @@ combo = ttk.Combobox(root, state = "readonly", values= list(options.keys()), tex
 combo.current()
 
 combo.bind("<<ComboboxSelected>>", lambda event:[show(),entry2.delete(0,"end"),(entry2.insert(0,options[material.get()]))])
-canvas.create_window(250, 215, window=combo)
+canvas.create_window(250, 245, window=combo)
 
 label = tk.Label(text="Lütfen Seslendirilmesini İstediğiniz Dosyanın Yolunu Giriniz. \n Elle Girmek İstemezseniz Dosya Seç Tuşuna Basarak Dosyayı Seçebilirsiniz.",font='Helvetica 10 bold')
 canvas.create_window(250, 60, window=label)
 
 label2 = tk.Label(text="Lütfen seslendirme dilini seçiniz.", font='Helvetica 10 bold')
-canvas.create_window(250, 180, window=label2)
+canvas.create_window(250, 210, window=label2)
 
 switch1 = ttk.Checkbutton(root, text="Temayı Değiştir", style="Switch.TCheckbutton", command = switch)
 canvas.create_window(30,320,window=switch1)
@@ -69,7 +70,21 @@ canvas.create_window(30,320,window=switch1)
 def setTextInput(text):
     entry1.delete(0,"end")
     entry1.insert(0, text)
-    
+
+def screenshot():
+    asd = pyscreenshot.grab()
+    asd.save("screenshot.png")
+    entry1.delete(0,"end")
+    entry1.insert(0, "screenshot.png")
+
+def web():
+    abc = entry1.get()
+    img_data = requests.get(abc).content
+    with open('image.png', 'wb') as handler:
+        handler.write(img_data)
+    entry1.delete(0,"end")
+    entry1.insert(0, "image.png") 
+       
 entry1 = tk.Entry()
 canvas.create_window(220, 120, width= 420, window=entry1)
 
@@ -136,6 +151,12 @@ def Process():
     # cv2.waitKey(0)
  
 button1 = ttk.Button(text='Seslendir', style='Accent.TButton',command=lambda:[Process()])
-canvas.create_window(250, 285, height= 35 ,width=90 , window=button1)
+canvas.create_window(250, 295, height= 35 ,width=90 , window=button1)
+
+button2 = ttk.Button(text='Ekran Görüntüsü Al', style='Accent.TButton',command=lambda:[screenshot()])
+canvas.create_window(300, 165, height= 35 ,width=140 , window=button2)
+
+button3 = ttk.Button(text='Webden Görüntü Al', style='Accent.TButton',command=lambda:[web()])
+canvas.create_window(150, 165, height= 35 ,width=140 , window=button3)
 
 root.mainloop()
