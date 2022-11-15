@@ -108,7 +108,10 @@ def Process():
     elif file_exists(xqc) == False:
         showinfo(title="UYARI!", message="Girdiğiniz dizinde böyle bir dosya bulunmamaktadır.")
     img = cv2.imread(xqc)
-    cv2.imshow("Image", img)
+    imS = cv2.resize(img, (600, 400))
+    cv2.namedWindow("Image")
+    cv2.moveWindow("Image", 40,30)
+    cv2.imshow("Image", imS)
     cv2.waitKey(0)
     data = pytesseract.image_to_data(img)
     
