@@ -19,7 +19,7 @@ pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\Tesse
 options = {"English":"en","Turkish":"tr","German":"de","French":"fr","Italian":"it","Spanish ":"es","Russian":"ru","Portuguese(Brazil)":"br","Danish":"da","Dutch":"nl","Polish":"pl","Ukrainian":"uk","Afrikaans":"af","Arabic":"ar","Bengali":"bn","Bulgarian":"bg","Catalan":"ca","Chinese":"yue","Czech":"cs","Filipino":"fil","Finnish":"fi","Greek":"el","Gujarati":"gu","Hindi":"hi","Hungarian":"hu","Icelandic":"is","Indonesian":"id","Japanese":"ja","Kannada":"kn","Korean":"ko","Latvian":"lv","Malay":"ms","Malayalam":"ml","Mandarin Chinese":"cmn","Norwegian":"nb","Portuguese(Portugal)":"pt","Punjabi":"pa","Romanian":"ro","Serbian":"sr","Slovak":"sk","Swedish":"sv","Tamil":"ta","Telugu":"te","Thai":"th","Vietnamese":"vi"} 
 
 root= tk.Tk()
-root.geometry("600x350")
+root.geometry("720x350")
 root.title("OCR & Text To Speech - © 2022 Batuhan Tomo")
 root.resizable(False, False)
 sv_ttk.set_theme("dark")
@@ -58,14 +58,14 @@ combo.current()
 combo.bind("<<ComboboxSelected>>", lambda event:[show(),entry2.delete(0,"end"),(entry2.insert(0,options[material.get()]))])
 canvas.create_window(250, 245, window=combo)
 
-label = tk.Label(text="Lütfen Seslendirilmesini İstediğiniz Dosyanın Yolunu Giriniz. \n Elle Girmek İstemezseniz Dosya Seç Tuşuna Basarak Dosyayı Seçebilirsiniz.",font='Helvetica 10 bold')
+label = tk.Label(text="Lütfen Seslendirilmesini İstediğiniz Dosyanın Bilgisayarınızdaki Yolunu Giriniz. \n Elle Girmek İstemezseniz 'Dosya Seç' Tuşuna Basarak Dosyayı Seçebilirsiniz. \n Web Sitesinden Görsel Seslendirilmesi İçin Görselin Linkini Girip 'Webden Görüntü Al' Tuşuna Basabilirsiniz. \n 'Ekran Görüntüsü Al' Tuşuna Basarak Mevcut Ekranın Görüntüsünü Alıp Seslendirilmesini Sağlayabilirsiniz.",font='Helvetica 10 bold')
 canvas.create_window(250, 60, window=label)
 
 label2 = tk.Label(text="Lütfen seslendirme dilini seçiniz.", font='Helvetica 10 bold')
 canvas.create_window(250, 210, window=label2)
 
 switch1 = ttk.Checkbutton(root, text="Temayı Değiştir", style="Switch.TCheckbutton", command = switch)
-canvas.create_window(30,320,window=switch1)
+canvas.create_window(-25,325,window=switch1)
 
 def setTextInput(text):
     entry1.delete(0,"end")
@@ -157,9 +157,9 @@ button1 = ttk.Button(text='Seslendir', style='Accent.TButton',command=lambda:[Pr
 canvas.create_window(250, 295, height= 35 ,width=90 , window=button1)
 
 button2 = ttk.Button(text='Ekran Görüntüsü Al', style='Accent.TButton',command=lambda:[screenshot()])
-canvas.create_window(300, 165, height= 35 ,width=140 , window=button2)
+canvas.create_window(320, 165, height= 35 ,width=140 , window=button2)
 
 button3 = ttk.Button(text='Webden Görüntü Al', style='Accent.TButton',command=lambda:[web()])
-canvas.create_window(150, 165, height= 35 ,width=140 , window=button3)
+canvas.create_window(170, 165, height= 35 ,width=140 , window=button3)
 
 root.mainloop()
