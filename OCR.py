@@ -81,10 +81,12 @@ def web():
     abc = entry1.get()
     if abc == "":
         showinfo(title="UYARI!", message="Linki Girmediniz.")
+        return
     try:    
         img_data = requests.get(abc).content
     except:
         showinfo(title="UYARI!", message="Link Hatalı veya Görüntü Alınamıyor.")
+        return
     with open('image.png', 'wb') as handler:
         handler.write(img_data)
     entry1.delete(0,"end")
@@ -108,10 +110,13 @@ def Process():
     xqc = entry1.get()
     if xqc == "":
         showinfo(title="UYARI!", message="Dosyayı Seçmediniz.")
+        return
     elif not xqc.endswith(".png" or ".jpg"):
         showinfo(title="UYARI!", message="Dosya Yolu ya da Dosya Formatı Hatalı. Dosya '.jpg' ya da '.png' uzantılı olmalıdır.")
+        return
     elif file_exists(xqc) == False:
         showinfo(title="UYARI!", message="Girdiğiniz Dizinde Böyle Bir Dosya Bulunmamaktadır.")
+        return
     img = cv2.imread(xqc)
     try:
         imS = cv2.resize(img, (600, 400))
@@ -144,6 +149,7 @@ def Process():
         showinfo(title="UYARI!", message="Seslendirme Dilini Seçmediniz.")
         fileread.close()
         os.remove("text.txt")
+        return
     line = fileread.read()
 
     if line != "":
@@ -157,6 +163,7 @@ def Process():
         showinfo(title="UYARI!", message="Görselde Okunacak Metin Bulunamamıştır veya Görseldeki Yazı Tipi Algılanamamıştır.")
         fileread.close()
         os.remove("text.txt")
+        return
     
     # Kelimelerin nasıl işlendiğin son halini görmek isterseniz buradaki yorum satırlarını kaldırabilirsiniz.
     # cv2.imshow("image 1", img)
