@@ -106,9 +106,13 @@ def Process():
     elif not xqc.endswith(".png" or ".jpg"):
         showinfo(title="UYARI!", message="Dosya Yolu ya da Dosya Formatı Hatalı. Dosya '.jpg' ya da '.png' uzantılı olmalıdır.")
     elif file_exists(xqc) == False:
-        showinfo(title="UYARI!", message="Girdiğiniz dizinde böyle bir dosya bulunmamaktadır.")
+        showinfo(title="UYARI!", message="Girdiğiniz Dizinde Böyle Bir Dosya Bulunmamaktadır.")
     img = cv2.imread(xqc)
-    imS = cv2.resize(img, (600, 400))
+    try:
+        imS = cv2.resize(img, (600, 400))
+    except:
+        showinfo(title="UYARI!", message="Dosya Bozuk veya Hatalı.")
+        return      
     cv2.namedWindow("Image")
     cv2.moveWindow("Image", 40,30)
     cv2.imshow("Image", imS)
