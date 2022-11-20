@@ -149,7 +149,7 @@ def Process():
         playsound("record.mp3")
         os.remove("record.mp3")  
     elif line == "":
-        showinfo(title="UYARI!", message="Görselde okunacak metin bulunamamıştır.")
+        showinfo(title="UYARI!", message="Görselde Okunacak Metin Bulunamamıştır veya Görseldeki Yazı Tipi Algılanamamıştır.")
         fileread.close()
         os.remove("text.txt")
     
