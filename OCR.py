@@ -61,7 +61,7 @@ canvas.create_window(250, 245, window=combo)
 label = tk.Label(text="Lütfen Seslendirilmesini İstediğiniz Dosyanın Bilgisayarınızdaki Yolunu Giriniz. \n Elle Girmek İstemezseniz 'Dosya Seç' Tuşuna Basarak Dosyayı Seçebilirsiniz. \n Web Sitesinden Görsel Seslendirilmesi İçin Görselin Linkini Girip 'Webden Görüntü Al' Tuşuna Basabilirsiniz. \n 'Ekran Görüntüsü Al' Tuşuna Basarak Mevcut Ekranın Görüntüsünü Alıp Seslendirilmesini Sağlayabilirsiniz.",font='Helvetica 10 bold')
 canvas.create_window(250, 60, window=label)
 
-label2 = tk.Label(text="Lütfen seslendirme dilini seçiniz.", font='Helvetica 10 bold')
+label2 = tk.Label(text="Lütfen Seslendirme Dilini Seçiniz.", font='Helvetica 10 bold')
 canvas.create_window(250, 210, window=label2)
 
 switch1 = ttk.Checkbutton(root, text="Temayı Değiştir", style="Switch.TCheckbutton", command = switch)
