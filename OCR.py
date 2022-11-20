@@ -79,7 +79,12 @@ def screenshot():
 
 def web():
     abc = entry1.get()
-    img_data = requests.get(abc).content
+    if abc == "":
+        showinfo(title="UYARI!", message="Linki Girmediniz.")
+    try:    
+        img_data = requests.get(abc).content
+    except:
+        showinfo(title="UYARI!", message="Link Hatalı veya Görüntü Alınamıyor.")
     with open('image.png', 'wb') as handler:
         handler.write(img_data)
     entry1.delete(0,"end")
