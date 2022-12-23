@@ -78,12 +78,12 @@ def screenshot():
     entry1.insert(0, "screenshot.png")
 
 def web():
-    abc = entry1.get()
-    if abc == "":
+    weblink = entry1.get()
+    if weblink == "":
         showinfo(title="UYARI!", message="Linki Girmediniz.")
         return
     try:    
-        img_data = requests.get(abc).content
+        img_data = requests.get(weblink).content
     except:
         showinfo(title="UYARI!", message="Link Hatalı veya Görüntü Alınamıyor.")
         return
@@ -107,17 +107,17 @@ canvas.create_window(480, 120, window=open_button)
 
     
 def Process():
-    xqc = entry1.get()
-    if xqc == "":
+    picture = entry1.get()
+    if picture == "":
         showinfo(title="UYARI!", message="Dosyayı Seçmediniz.")
         return
-    elif not xqc.endswith(".png" or ".jpg"):
+    elif not picture.endswith(".png" or ".jpg"):
         showinfo(title="UYARI!", message="Dosya Yolu ya da Dosya Formatı Hatalı. Dosya '.jpg' ya da '.png' uzantılı olmalıdır.")
         return
-    elif file_exists(xqc) == False:
+    elif file_exists(picture) == False:
         showinfo(title="UYARI!", message="Girdiğiniz Dizinde Böyle Bir Dosya Bulunmamaktadır.")
         return
-    img = cv2.imread(xqc)
+    img = cv2.imread(picture)
     try:
         imS = cv2.resize(img, (600, 400))
     except:
@@ -173,9 +173,9 @@ button1 = ttk.Button(text='Seslendir', style='Accent.TButton',command=lambda:[Pr
 canvas.create_window(250, 295, height= 35 ,width=90 , window=button1)
 
 button2 = ttk.Button(text='Ekran Görüntüsü Al', style='Accent.TButton',command=lambda:[screenshot()])
-canvas.create_window(320, 165, height= 35 ,width=140 , window=button2)
+canvas.create_window(330, 165, height= 35 ,width=160 , window=button2)
 
 button3 = ttk.Button(text='Webden Görüntü Al', style='Accent.TButton',command=lambda:[web()])
-canvas.create_window(170, 165, height= 35 ,width=140 , window=button3)
+canvas.create_window(160, 165, height= 35 ,width=160 , window=button3)
 
 root.mainloop()
